@@ -22,7 +22,7 @@ jobs:
           docker rm zomato
 
       - name: Update kubeconfig
-        run: aws eks --region ap-south-1 update-kubeconfig --name Zomato-EKS-Cluster
+        run: aws eks --region us-east-1 update-kubeconfig --name Zomato-EKS-Cluster
 
       - name: Deploy to kubernetes
         run: kubectl delete -f deployment-service.yml
