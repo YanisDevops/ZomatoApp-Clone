@@ -38,7 +38,11 @@ jobs:
       - name: docker pull image
         run: docker pull yanishub1/zomato:latest
       - name: Image scan
-        run: trivy image yanishub1/zomato:latest > trivyimagedeploy.txt
+        run: trivy image yanishub1/zomato:latest > trivyimagedeploy.txt    
+      - name: Stop container 
+        run: docker stop zomato
+      - name: Delete container 
+        run: docker rm zomato
       - name: Deploy to container
         run: docker run -d --name zomato -p 3000:3000 yanishub1/zomato:latest
       - name: Configure AWS credentials
